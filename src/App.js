@@ -10,7 +10,7 @@ import { loadQuoteForStock } from './api/iex'
 class App extends Component {
   state = {
     error: null,
-    enteredSymbol: 'NFLX',
+    enteredSymbol: 'MSFT',
     quote: null,
     time: ''
   };
@@ -22,28 +22,7 @@ class App extends Component {
   //       )
 
   componentDidMount() {
-    loadQuoteForStock("msft")
-      .then(quote => {
-        this.setState({ quote: quote });
-    }).catch((error) => {
-      if (error.response.status === 404) {
-        error = new Error("That stock symbol does not exist.")
-      }
-      this.setState({ error: error })
-      console.log("Error loading quote", error)
-    })
-
-  //   fetchCurrentTime()
-  //     .then(res => {
-  //       this.intervalId = setInterval(() => fetchCurrentTime(
-  //         this.setState({ time: res.currentDateTime })
-          
-  //       ), 10000);
-  //       console.log("time", this.state.time)
-  //     });
-  //   // this.fetchCurrentTime();
-  //   // this.setState({ countdownText: months + days + hours + mins + secs })
-  //   //   }, interval)
+    this.loadQuote()
   }
 
   onChangeEnteredSymbol = (event) => {
@@ -56,7 +35,27 @@ class App extends Component {
       enteredSymbol: value
     })
   }
-  
+
+  loadQuote = () => {
+    // Getting the string that the user has entered from the state
+    const { enteredSymbol } = this.state 
+    // when the button is clicked, it reads the value (enteredSymbol) and accesses the API
+    loadQuoteForStock(enteredSymbol)
+      .then(quote => {
+        this.setState({ 
+          quote: quote,
+          error: null  // clear error
+        });
+      })
+      .catch(error => {
+        if (error.response.status === 404) {
+          error = new Error(`The stock symbol ${enteredSymbol} does not exist.`);
+        }
+        this.setState({ error: error });
+        console.log("Error loading quote", error);
+      });
+  }
+
   // Render is called whenever the state changes
   render() {
     const { error, enteredSymbol, quote, time } = this.state;
@@ -69,7 +68,10 @@ class App extends Component {
         <Time utc={time} />
         <label>
           <input value={enteredSymbol} placeholder={enteredSymbol} aria-label="Symbol" onChange={this.onChangeEnteredSymbol} />
-          <button className="ml-1" onClick={this.loadQuote}>
+          <button 
+            className="ml-1" 
+            onClick={this.loadQuote}
+          >
             Load Quote
           </button>
         </label>

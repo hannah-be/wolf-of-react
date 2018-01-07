@@ -11,12 +11,15 @@ input{
   font-size: 1rem;
   padding: 0.4rem;
   margin: 0.4rem;
+  border: none;
+  background: coral;
+  color: dodgerblue;
 }
 
 button {
   font-size: 1rem;
-  color: white;
-  background: #222; 
+  color: coral;
+  background: dodgerblue; 
   border: none;
   padding: 0.4rem;
   margin: 0.4rem;
