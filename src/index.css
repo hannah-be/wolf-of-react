@@ -1,5 +1,27 @@
+html{
+  font-size: 20px;
+}
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+}
+
+input{
+  font-size: 1rem;
+  padding: 0.4rem;
+  margin: 0.4rem;
+}
+
+button {
+  font-size: 1rem;
+  color: white;
+  background: #222; 
+  border: none;
+  padding: 0.4rem;
+  margin: 0.4rem;
+}
+
+.ml-1{
+  margin-left: 0.25rem;
 }

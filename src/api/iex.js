@@ -8,6 +8,7 @@ const api = axios.create({
 export function loadQuoteForStock(symbol) {
   return api.get(`${symbol}/quote`)
     .then(res => {
-      return res.data
+//this is like going down a level because what we get returned is one level above what we wanted, ie, this gives us the json data instead of an object comprising that data
+      return res.data;
     });
 }

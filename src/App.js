@@ -10,6 +10,7 @@ import { loadQuoteForStock } from './api/iex'
 class App extends Component {
   state = {
     error: null,
+    enteredSymbol: 'NFLX',
     quote: null,
     time: ''
   };
@@ -21,7 +22,7 @@ class App extends Component {
   //       )
 
   componentDidMount() {
-    loadQuoteForStock("smsft")
+    loadQuoteForStock("msft")
       .then(quote => {
         this.setState({ quote: quote });
     }).catch((error) => {
@@ -45,25 +46,36 @@ class App extends Component {
   //   //   }, interval)
   }
 
-
+  onChangeEnteredSymbol = (event) => {
+    const input = event.target
+    const value = input.value.trim().toUpperCase()// The entered text from the selected field
+    // Text will be all caps and have no white space
+    // Change state to reflect the new value
+    // We don't need to do anything that relies on the previous state so we just set the value to the new value
+    this.setState({
+      enteredSymbol: value
+    })
+  }
+  
+  // Render is called whenever the state changes
   render() {
-    const { error, quote, time } = this.state;
+    const { error, enteredSymbol, quote, time } = this.state;
 
-    return (
-      <div className="App">
+    return <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">React Share Prices</h1>
         </header>
         <Time utc={time} />
-        {
-          !!error && 
-            <p>{ error.message }</p>
-        }
-        {!!quote ? (
-          <StockInfo
-            // Tell the component that all of 'quote's' key value pairs will also be it's key value pairs
-            {...quote}
+        <label>
+          <input value={enteredSymbol} placeholder={enteredSymbol} aria-label="Symbol" onChange={this.onChangeEnteredSymbol} />
+          <button className="ml-1" onClick={this.loadQuote}>
+            Load Quote
+          </button>
+        </label>
+        {!!error && <p>{error.message}</p>}
+        {!!quote ? <StockInfo // Tell the component that all of 'quote's' key value pairs will also be it's key value pairs
+            {...quote} /> : <p>Loading...</p>
             // Equivalent to:
             // symbol={ quote.symbol }
             // companyName={ quote.companyName }
@@ -72,30 +84,19 @@ class App extends Component {
             // latestSource={ quote.latestSource }
             // week52High={ quote.week52High }
             //  week52Low={ quote.week52Low }
-          />
-        ) : (
-          <p>Loading...</p>
-        )}
+        }
         <small>
           <p>
-            Icon made by{" "}
-            <a href="http://www.freepik.com" title="Freepik">
+            Icon made by <a href="http://www.freepik.com" title="Freepik">
               Freepik
-            </a>{" "}
-            from{" "}
-            <a href="https://www.flaticon.com/" title="Flaticon">
+            </a> from <a href="https://www.flaticon.com/" title="Flaticon">
               www.flaticon.com
-            </a>. Licensed by{" "}
-            <a
-              href="http://creativecommons.org/licenses/by/3.0/"
-              title="Creative Commons BY 3.0"
-            >
+            </a>. Licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">
               CC 3.0 BY
             </a>
           </p>
         </small>
-      </div>
-    );
+      </div>;
   }
 }
 

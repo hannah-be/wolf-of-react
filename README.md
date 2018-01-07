@@ -11,3 +11,8 @@ Learning how to use react with APIs.
 - create `api` folder within `src` and add a file for grabbing the API data - in this case, from IEX: `iex.js`
 - follow axios documentation to setup get requests
 - use `componentDidMount()` to get the data to render when loaded
+
+## Add user input field
+1. Get the input field to render
+2. Add the input data to state
+3. Get the state to respond to user interaction
