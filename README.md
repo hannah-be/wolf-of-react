@@ -24,3 +24,6 @@ Learning how to use react with APIs.
 4. Add 6 month table using: https://iextrading.com/developer/docs/#chart
 5. Add 6 month chart using: https://iextrading.com/developer/docs/#chart
    Nice charting library in React: http://recharts.org/#/en-US/guide/getting-started
+
+## Useful learnings
+- Keys help React identify which items have changed, are added, or are removed. Keys should be given to the elements inside the array to give the elements a stable identity. The best way to pick a key is to use a string that uniquely identifies a list item among its siblings. IDs from your data are often used as keys, but when no stable ID exists for rendered items, you can use the item index as a key of last resort. If the order ot the items may change, avoid using indexes as this can cause issues with state and negatively impact performance. 

@@ -19,11 +19,11 @@ export const loadQuoteForStockLogo = (symbol) => {
 }
 
 export const loadRecentNewsForStock = (symbol) => {
-  return api.get(`${symbol}/news`)
+  return api.get(`${symbol}/news/last/5`)
     .then(res => res.data)
 }
 
-export const loadChartForStock = (symbol, range) => {
-  return api.get(`${symbol}/chart/${range}`)
+export const loadChartForStock = (symbol) => {
+  return api.get(`${symbol}/chart/1m`)
     .then(res => res.data)
 }

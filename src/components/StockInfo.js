@@ -17,9 +17,9 @@ function StockInfo({
         {latestPrice} ({latestSource})
       </h3>
       <div>
-        <p><strong>52 Week High:</strong> {week52High}</p>
-        <p><strong>52 Week Low:</strong> {week52Low}</p>
-        <p><strong>Exchange:</strong> {primaryExchange}</p>
+        <p><strong>52 Week High:</strong>{week52High}</p>
+        <p><strong>52 Week Low:</strong>{week52Low}</p>
+        <p><strong>Exchange:</strong>{primaryExchange}</p>
       </div>
     </div>;
 }

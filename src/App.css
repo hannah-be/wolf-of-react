@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: 'Cochin';
 }
 
 .App-logo {
@@ -11,7 +12,7 @@
   background-color: rgb(228, 227, 227);
   height: 150px;
   padding: 20px;
-  color: #2473AB;
+  color: dodgerblue;
   margin-bottom: 5px;
 }
 
@@ -28,12 +29,31 @@
   to { transform: rotateX(360deg); }
 }
 
-.card {
-  min-width: 30rem;
-  /* max-width: 30rem; */
-}
-
 .charts {
   min-width: 30rem;
   max-width: 30rem;
+}
+
+table {
+  margin: auto;
+}
+
+td {
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+
+.LineChart {
+  margin: auto;
+}
+
+h2 {
+  color: dodgerblue;
+  font-family: 'American Typewriter';
+  font-weight: lighter;
+}
+
+p {
+  font-size: 0.8rem;
+  
 }
