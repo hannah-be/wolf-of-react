@@ -107,6 +107,12 @@ class App extends Component {
     }
   };
 
+  onMouseEnterClearForm = event => {
+    this.setState({
+      enteredSymbol: ''
+    });
+  }
+
   // Render is called whenever the state changes
   render() {
     const { error, enteredSymbol, quote, logoerror, logo, newsItems, searchHistory, chartResults, time } = this.state;
@@ -117,7 +123,7 @@ class App extends Component {
           <h1 className="App-title">React Share Prices</h1>
         </header>
         <label>
-          <input value={enteredSymbol} placeholder={enteredSymbol} aria-label="Symbol" onChange={this.onChangeEnteredSymbol} onKeyDown={this.onKeyDownPressEnter} />
+          <input value={enteredSymbol} placeholder={enteredSymbol} aria-label="Symbol" onChange={this.onChangeEnteredSymbol} onKeyDown={this.onKeyDownPressEnter} onClick={this.onMouseEnterClearForm} />
           <button className="ml-1" onClick={this.loadQuote}>
             Load Quote
           </button>
@@ -128,6 +134,7 @@ class App extends Component {
         {!!quote ? <StockInfo {...quote} /> : <p>Loading...</p> // Tell the component that all of 'quote's' key value pairs will also be it's key value pairs
         }
         <br />
+        <div className="performance item">
         <h2>Performance</h2>
         <LineChart className="LineChart" width={1000} height={400} data={chartResults} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
           <XAxis dataKey="label" height={60} />
@@ -140,16 +147,21 @@ class App extends Component {
           <Line type="monotone" dataKey="open" stroke="#3969AC" />
           <Line type="monotone" dataKey="close" stroke="#F2B701" />
         </LineChart>
-        <h2>Six Month Table</h2>
+        </div>
+        <div className="table item">
+        <h2>Six Week Table</h2>
         <Table>
           {!!chartResults.length > 0 &&
             chartResults.map(row => <TableRow key={row.call} {...row} />)}
         </Table>
+        </div>
+        <div className="news item">
         <h2>Latest News</h2>
         <ol>
           {!!newsItems.length > 0 &&
             newsItems.map(item => <NewsItem key={item.call} {...item} />)}
         </ol>
+        </div>
         <h6>Timestamp: {time}</h6>
         <h2>Search History</h2>
         <ol>

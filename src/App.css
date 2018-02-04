@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  font-family: 'Cochin';
+  font-family: 'Futura';
 }
 
 .App-logo {
@@ -41,6 +41,7 @@ table {
 td {
   margin: 0.5rem;
   padding: 0.5rem;
+  font-size: 0.6rem;
 }
 
 .LineChart {
@@ -56,4 +57,14 @@ h2 {
 p {
   font-size: 0.8rem;
   
+}
+
+.item {
+  margin: 1rem;
+  padding: 1rem;
+}
+
+a {
+  color: dodgerblue;
+  font-size: 0.8rem;
 }

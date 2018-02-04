@@ -10,7 +10,7 @@ const NewsItem = ({
 }) => {
   return (
     <div>
-      <h3>{headline}</h3>
+      <h4>{headline}</h4>
       <a href={url}>{source}</a>
       <p>{summary}</p>
       <time dateTime={dateTime}>{dateTime}</time>
