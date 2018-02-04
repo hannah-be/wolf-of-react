@@ -24,6 +24,16 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from { transform: rotateX(0deg); }
+  to { transform: rotateX(360deg); }
+}
+
+.card {
+  min-width: 30rem;
+  /* max-width: 30rem; */
+}
+
+.charts {
+  min-width: 30rem;
+  max-width: 30rem;
 }
